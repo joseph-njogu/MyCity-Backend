@@ -39,7 +39,7 @@ class ParkingViewSet(viewsets.ModelViewSet):
     API endpoint that allows users to be viewed or edited.
     """
     queryset = ParkingInfo.objects.all().order_by('capacity')
-    serializer_class = UserSerializer
+    serializer_class = ParkingInfoSerializer
 class ParkingInfoCreate(generics.CreateAPIView):
 	serializer_class = ParkingInfoSerializer
 

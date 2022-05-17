@@ -32,8 +32,8 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    authentication_classes = (authentication.TokenAuthentication)
+    # permission_classes = [permissions.IsAuthenticated]
+    # authentication_classes = (authentication.TokenAuthentication)
 class ParkingViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.

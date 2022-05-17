@@ -16,7 +16,7 @@ class ParkingSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
-		fields = ('username','password')
+		fields = ('first_name','last_name','username', 'email', 'password')
 
 	def create(self, validated_data):
 		user = User(

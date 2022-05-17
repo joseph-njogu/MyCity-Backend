@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import viewsets
-from rest_framework import permissions
+from rest_framework import permissions, authentication
 from .models import *
 from .serializers import *
 
@@ -32,8 +32,8 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-    # permission_classes = [permissions.IsAuthenticated]
-
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = (authentication.TokenAuthentication)
 class ParkingViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.

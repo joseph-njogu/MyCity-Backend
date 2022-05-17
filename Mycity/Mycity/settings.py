@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'CityBackend',
     'rest_framework',
-    'rest_framework.uthtoken',
-    'corsheaders',
+    'rest_framework.authtoken',
+    # 'corsheaders',
+    'location_field.apps.DefaultConfig',
 ]
 
 MIDDLEWARE = [

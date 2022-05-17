@@ -5,15 +5,15 @@ CHOICES_TYPE = (
     ("1","Disabled"),
     ("2","NotDisabled")
 )
-class UserData(models.Model):
-    fname = models.CharField(max_length=120)
-    lname = models.CharField(max_length=120)
-    username = models.CharField(max_length=120)
-    email = models.EmailField(max_length=120)
-    password = models.CharField(max_length=10)
-
-    def __str__(self):
-            return self.username
+# class UserData(models.Model):
+#     fname = models.CharField(max_length=120)
+#     lname = models.CharField(max_length=120)
+#     username = models.CharField(max_length=120)
+#     email = models.EmailField(max_length=120)
+#     password = models.CharField(max_length=10)
+#
+#     def __str__(self):
+#             return self.username
 
 class Place(models.Model):
     name = models.CharField(max_length=20)

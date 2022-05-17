@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from location_field.models.plain import PlainLocationField
 
 CHOICES_TYPE = (
-    ("1","Disabled"),
-    ("2","NotDisabled")
+    ("Busy","Busy"),
+    ("Available","Available")
 )
 # class UserData(models.Model):
 #     fname = models.CharField(max_length=120)

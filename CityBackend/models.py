@@ -31,7 +31,7 @@ class ParkingInfo(models.Model):
     category = models.CharField(max_length=20,choices=CHOICES_TYPE, default=1)
 
     def __str__(self):
-            return self.capacity
+            return self.name
 class Parking(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)

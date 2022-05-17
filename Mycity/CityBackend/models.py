@@ -1,9 +1,9 @@
-from unicodedata import category
 from django.db import models
+import datetime
 
-choices = (
-    ("Maimed"),
-    ("Normal"),
+CHOICES_TYPE = (
+    ("1","Disabled"),
+    ("2","NotDisabled")
 )
 class UserData(models.Model):
     fname = models.CharField(max_length=120)
@@ -12,6 +12,9 @@ class UserData(models.Model):
     email = models.EmailField(max_length=120)
     password = models.CharField(max_length=10)
 
+    def __str__(self):
+            return self.username
+
 class Place(models.Model):
     name = models.CharField(max_length=20)
     coord = models.PointField(blank=True, null=True)
@@ -19,8 +22,16 @@ class Place(models.Model):
     def __str__(self):
           return self.name
   
-class Parking(models.Model):
+class ParkingInfo(models.Model):
     capacity = models.IntegerField()
     location = models.PointField(blank=True, null=True)
     name = models.CharField(max_length=120)
-    category = models.CharField(max_length=20,choices, default=None)
+    category = models.CharField(max_length=20,choices=CHOICES_TYPE, default=1)
+
+    def __str__(self):
+            return self.capacity
+class Packing(models.Model):
+    user = models.ForeignKey(UserData, on_delete=models.CASCADE)
+    parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)
+    place = models.ForeignKey(Place, on_delete=models.CASCADE)
+    time = models.DateTimeField(default=datetime.now)

@@ -1,6 +1,7 @@
 asgiref==3.4.1
 attrs==21.2.0
 Django==3.2.5
+django-location-field==2.1.0
 django-shortcuts==1.6
 djangorestframework==3.12.4
 drf-spectacular==0.17.2

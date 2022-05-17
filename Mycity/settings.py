@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'Mycity.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-DATABASES['default'].update(db_from_env)
+DATABASES = ['default'].update(db_from_env)
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',

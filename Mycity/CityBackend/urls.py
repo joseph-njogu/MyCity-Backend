@@ -12,10 +12,15 @@ from django.urls import path
 from .apiviews import *
 
 router = DefaultRouter()
+router.register('listusers', UserViewSet),
+router.register('listparkings', ParkingViewSet)
+router.register('parkings', PlaceViewSet)
 
 urlpatterns = [
     path("users/", UserCreate.as_view(), name="user_create"),
     path("login/", LoginView.as_view(), name="login"),
+    path('parkinginfo',ParkingInfoCreate.as_view(), name='parkinginfo')
+
 ]
 
 urlpatterns += router.urls

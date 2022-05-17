@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import viewsets
+from rest_framework import permissions
 from .models import *
 from .serializers import *
 
@@ -24,3 +25,24 @@ class LoginView(APIView):
 			return Response({"token": user.auth_token.key})
 		else:
 			return Response({"error": "Wrong Credentials"}, status=status.HTTP_400_BAD_REQUEST)
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+class ParkingViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = ParkingInfo.objects.all().order_by('capacity')
+    serializer_class = UserSerializer
+class ParkingInfoCreate(generics.CreateAPIView):
+	serializer_class = ParkingInfoSerializer
+
+class PlaceViewSet(viewsets.ModelViewSet):
+	queryset = Place.objects.all().order_by('location')
+	serializer_class = PlaceSerializer

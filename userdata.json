@@ -1,0 +1,18 @@
+{ 
+    "id"                    : "",
+    "email"                 : "",
+    "fname"                 : "",
+    "lname"                 : "",
+    "username"              : "",
+    "password"              : "",
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Point",
+            "coordinates": [
+                lat,
+                long
+            ]
+        }
+    },
+}

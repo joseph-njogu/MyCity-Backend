@@ -16,7 +16,7 @@ router = DefaultRouter()
 router.register('listusers', UserViewSet),
 router.register('listparkings', ParkingViewSet)
 router.register('parkings', PlaceViewSet)
-router.register('bookings', BookingViewSet)
+router.register('booking', BookingViewSet)
 
 urlpatterns = [
     path("users/", UserCreate.as_view(), name="user_create"),

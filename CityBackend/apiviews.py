@@ -7,6 +7,11 @@ from rest_framework import viewsets
 from rest_framework import permissions, authentication
 from .models import *
 from .serializers import *
+import requests
+import geopy.distance
+
+capacity = ParkingInfo.objects.all()
+occupied = Parking.objects.all().order_by('capacity')
 
 class UserCreate(generics.CreateAPIView):
 	authentication_classes = ()
@@ -35,14 +40,22 @@ class UserViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
     # authentication_classes = (authentication.TokenAuthentication)
 class ParkingViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
     queryset = ParkingInfo.objects.all().order_by('capacity')
     serializer_class = ParkingInfoSerializer
+class ParkingViewSet(viewsets.ModelViewSet):
+        
+    occupied = Parking.objects.all().order_by('capacity')
+    serializer_class = ParkingSerializer
 class ParkingInfoCreate(generics.CreateAPIView):
-	serializer_class = ParkingInfoSerializer
+    queryset = ParkingInfo.objects.create()
+    serializer_class = ParkingInfoSerializer
 
 class PlaceViewSet(viewsets.ModelViewSet):
 	queryset = Place.objects.all().order_by('location')
 	serializer_class = PlaceSerializer
+class BookingsViewSet(viewsets.ModelViewSet):
+    queryset = Bookings.objects.all().order_by('served_date')
+    serializer_class = BookingsSerializer
+class BookingsCreate(generics.CreateAPIView):
+    queryset = Bookings.objects.create()
+    serializer_class = BookingsSerializer

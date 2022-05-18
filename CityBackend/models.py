@@ -20,7 +20,6 @@ CHOICES_TYPE = (
 class Place(models.Model):
     city = models.CharField(max_length=255)
     location = PlainLocationField(based_fields=['city'], zoom=7)
-    
     def __str__(self):
           return self.city
   
@@ -32,8 +31,28 @@ class ParkingInfo(models.Model):
 
     def __str__(self):
             return self.name
+status_choices = (
+    ("1", "In Progress"),
+    ("2", "Completed")
+)
+Rating_choices = (
+    ("1", "Good"),
+    ("2", "Average"),
+    ("3", "Bad")
+)
 class Parking(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
     bookingdate = models.DateTimeField(auto_now=True)
+
+class Bookings(models.Model):
+    status = models.CharField(max_length=20, choices=status_choices, default=1)
+    ratings = models.CharField(max_length=20, choices=Rating_choices, default=1)
+    plate = models.CharField(max_length=8)
+    served_date = models.DateTimeField(auto_now=True)
+    parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)
+    amount = models.IntegerField()
+
+    def __str__(self):
+            return self.plate

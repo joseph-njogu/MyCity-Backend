@@ -26,3 +26,4 @@ sqlparse==0.4.1
 uritemplate==3.0.1
 urllib3==1.26.9
 whitenoise==6.1.0
+django-heroku==0.3.1

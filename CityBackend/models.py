@@ -24,7 +24,7 @@ class Place(models.Model):
           return self.city
   
 class ParkingInfo(models.Model):
-    capacity = models.IntegerField(null=False)
+    capacity = models.IntegerField(default=0)
     location = PlainLocationField(based_fields=['city'], zoom=7)
     name = models.CharField(max_length=120)
     category = models.CharField(max_length=20,choices=CHOICES_TYPE, default=1)

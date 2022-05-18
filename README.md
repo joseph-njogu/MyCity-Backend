@@ -19,6 +19,6 @@ https://cityparkapi.herokuapp.com/citypark/listparkings/
 #### List all the available users
 https://cityparkapi.herokuapp.com/citypark/listusers/
 
-#### New URLS
+#### New URLS Updated
 https://cityparkapi.herokuapp.com/citypark/bookings/
 https://cityparkapi.herokuapp.com/citypark/createbookings/

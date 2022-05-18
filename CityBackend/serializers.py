@@ -34,7 +34,7 @@ class ParkingInfoSerializer(serializers.ModelSerializer):
     	class Meta:
             model = ParkingInfo
             fields = '__all__'
-class BookingsSerializer(serializers.ModelSerializer):
+class BookingSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Booking
 		fields = ('status', 'ratings', 'plate', 'amount', 'parkinginfo')

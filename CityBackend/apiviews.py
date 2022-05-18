@@ -44,9 +44,9 @@ class ParkingInfoCreate(generics.CreateAPIView):
 class PlaceViewSet(viewsets.ModelViewSet):
 	queryset = Place.objects.all().order_by('location')
 	serializer_class = PlaceSerializer
-class BookingsViewSet(viewsets.ModelViewSet):
-    queryset = Bookings.objects.all().order_by('served_date')
-    serializer_class = BookingsSerializer
-class BookingsCreate(generics.CreateAPIView):
-    # queryset = Bookings.objects.create()
+class BookingViewSet(viewsets.ModelViewSet):
+    queryset = Booking.objects.all().order_by('served_date')
+    serializer_class = BookingSerializer
+class BookingCreate(generics.CreateAPIView):
+    # queryset = Booking.objects.create()
     serializer_class = BookingsSerializer

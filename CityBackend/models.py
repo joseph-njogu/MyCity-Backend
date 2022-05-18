@@ -55,7 +55,7 @@ class Booking(models.Model):
     served_date = models.DateTimeField(auto_now=True)
     # parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)
     amount = models.IntegerField()
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE null=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
             return self.plate

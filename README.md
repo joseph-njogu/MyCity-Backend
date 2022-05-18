@@ -22,3 +22,6 @@ https://cityparkapi1.herokuapp.com/citypark/listusers/
 #### New URLS Updated
 https://cityparkapi1.herokuapp.com/citypark/bookings/
 https://cityparkapi1.herokuapp.com/citypark/createbookings/
+
+https://cityparkapi1.herokuapp.com/citypark/callback
+https://cityparkapi1.herokuapp.com/citypark/online/lipa

@@ -50,7 +50,7 @@ class Parking(models.Model):
 
 class Booking(models.Model):
     status = models.CharField(max_length=20, choices=status_choices, default='In progress')
-    rating = models.CharField(max_length=20, choices=Rating_choices, default='Good')
+    ratings = models.CharField(max_length=20, choices=Rating_choices, default='Good')
     plate = models.CharField(max_length=8)
     served_date = models.DateTimeField(auto_now=True)
     # parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)

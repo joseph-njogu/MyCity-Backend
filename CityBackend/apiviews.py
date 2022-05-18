@@ -49,4 +49,4 @@ class BookingViewSet(viewsets.ModelViewSet):
     serializer_class = BookingSerializer
 class BookingCreate(generics.CreateAPIView):
     # queryset = Booking.objects.create()
-    serializer_class = BookingsSerializer
+    serializer_class = BookingSerializer

@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'Mycity.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-DATABASE_URL = 'postgres://ltltunbrimmlhy:c99a03f3ed17a8bda6021034321a649fc7654017e811ac557e2d50841f597fd1@ec2-52-3-2-245.compute-1.amazonaws.com:5432/d3rsv3qkl8d9ii'
+DATABASE_URL = 'postgres://megmllasmwvdhz:07815d94cd128cd13b9e3d83b70f157e97caf5e45e05531e7e60fc2b924f4e5f@ec2-44-195-169-163.compute-1.amazonaws.com:5432/dids5jr1hf4lk'
 DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')

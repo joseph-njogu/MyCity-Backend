@@ -24,6 +24,7 @@ class Place(models.Model):
           return self.city
   
 class ParkingInfo(models.Model):
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE
     capacity = models.IntegerField(default=0)
     location = PlainLocationField(based_fields=['city'], zoom=7)
     name = models.CharField(max_length=120)
@@ -42,7 +43,7 @@ Rating_choices = (
 )
 class Parking(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    # parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)
+    parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
     bookingdate = models.DateTimeField(auto_now=True)
 
@@ -51,7 +52,7 @@ class Bookings(models.Model):
     ratings = models.CharField(max_length=20, choices=Rating_choices, default=1)
     plate = models.CharField(max_length=8)
     served_date = models.DateTimeField(auto_now=True)
-    # parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)
+    parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)
     amount = models.IntegerField()
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 

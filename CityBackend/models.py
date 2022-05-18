@@ -42,6 +42,7 @@ Rating_choices = (
 )
 class Parking(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    # parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
     bookingdate = models.DateTimeField(auto_now=True)
 
@@ -50,8 +51,9 @@ class Bookings(models.Model):
     ratings = models.CharField(max_length=20, choices=Rating_choices, default=1)
     plate = models.CharField(max_length=8)
     served_date = models.DateTimeField(auto_now=True)
-    parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)
+    # parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)
     amount = models.IntegerField()
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
             return self.plate

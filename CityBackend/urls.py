@@ -10,7 +10,7 @@ from rest_framework.routers import DefaultRouter
 
 from django.urls import path
 from .apiviews import *
-from .views import *
+from . import views
 
 router = DefaultRouter()
 router.register('listusers', UserViewSet),

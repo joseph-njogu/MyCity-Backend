@@ -7,11 +7,6 @@ from rest_framework import viewsets
 from rest_framework import permissions, authentication
 from .models import *
 from .serializers import *
-import requests
-import geopy.distance
-
-capacity = ParkingInfo.objects.all()
-occupied = Parking.objects.all().order_by('capacity')
 
 class UserCreate(generics.CreateAPIView):
 	authentication_classes = ()

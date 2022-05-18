@@ -20,11 +20,11 @@ class LoginView(APIView):
 	def post(self, request,):
 		username = request.data.get("username")
 		password = request.data.get("password")
-		# user = authenticate(username=username, password=password)
-		# if user:
-		# 	return Response({"token": user.auth_token.key})
-		# else:
-		# 	return Response({"error": "Wrong Credentials"}, status=status.HTTP_400_BAD_REQUEST)
+		user = authenticate(username=username, password=password)
+		if user:
+			return Response({"token": user.auth_token.key})
+		else:
+			return Response({"error": "Wrong Credentials"}, status=status.HTTP_400_BAD_REQUEST)
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -35,17 +35,17 @@ class UserViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
     # authentication_classes = (authentication.TokenAuthentication)
 class ParkingViewSet(viewsets.ModelViewSet):
-    queryset = ParkingInfo.objects.all().order_by('name')
+    queryset = ParkingInfo.objects.all()
     serializer_class = ParkingInfoSerializer
 class ParkingInfoCreate(generics.CreateAPIView):
     # queryset = ParkingInfo.objects.create()
     serializer_class = ParkingInfoSerializer
 
 class PlaceViewSet(viewsets.ModelViewSet):
-	queryset = Place.objects.all().order_by('location')
+	queryset = Place.objects.all()
 	serializer_class = PlaceSerializer
 class BookingViewSet(viewsets.ModelViewSet):
-    queryset = Booking.objects.all().order_by('served_date')
+    queryset = Booking.objects.all()
     serializer_class = BookingSerializer
 class BookingCreate(generics.CreateAPIView):
     # queryset = Booking.objects.create()

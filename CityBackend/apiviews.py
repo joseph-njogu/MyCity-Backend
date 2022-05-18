@@ -35,7 +35,7 @@ class UserViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
     # authentication_classes = (authentication.TokenAuthentication)
 class ParkingViewSet(viewsets.ModelViewSet):
-    queryset = ParkingInfo.objects.all().order_by('capacity')
+    queryset = ParkingInfo.objects.all().order_by('name')
     serializer_class = ParkingInfoSerializer
 class ParkingInfoCreate(generics.CreateAPIView):
     queryset = ParkingInfo.objects.create()

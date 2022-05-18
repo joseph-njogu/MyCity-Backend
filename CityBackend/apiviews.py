@@ -37,10 +37,6 @@ class UserViewSet(viewsets.ModelViewSet):
 class ParkingViewSet(viewsets.ModelViewSet):
     queryset = ParkingInfo.objects.all().order_by('capacity')
     serializer_class = ParkingInfoSerializer
-class ParkingViewSet(viewsets.ModelViewSet):
-        
-    occupied = Parking.objects.all().order_by('capacity')
-    serializer_class = ParkingSerializer
 class ParkingInfoCreate(generics.CreateAPIView):
     queryset = ParkingInfo.objects.create()
     serializer_class = ParkingInfoSerializer

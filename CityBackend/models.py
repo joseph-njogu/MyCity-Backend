@@ -42,7 +42,6 @@ Rating_choices = (
 )
 class Parking(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    parkinginfo = models.ForeignKey(ParkingInfo, on_delete=models.CASCADE)
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
     bookingdate = models.DateTimeField(auto_now=True)
 

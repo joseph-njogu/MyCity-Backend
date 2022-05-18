@@ -24,7 +24,7 @@ class Place(models.Model):
           return self.city
   
 class ParkingInfo(models.Model):
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     capacity = models.IntegerField(default=0)
     location = PlainLocationField(based_fields=['city'], zoom=7)
     name = models.CharField(max_length=120)

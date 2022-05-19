@@ -4,6 +4,4 @@ from .models import *
 admin.site.register(Place)
 admin.site.register(Parking)
 admin.site.register(ParkingInfo)
-admin.site.register(Bookings)
-
-
+admin.site.register(Booking)

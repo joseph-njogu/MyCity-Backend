@@ -9,8 +9,8 @@ from .models import *
 from .serializers import *
 
 class UserCreate(generics.CreateAPIView):
-	authentication_classes = ()
-	permission_classes = ()
+	# authentication_classes = ()
+	# permission_classes = ()
 	serializer_class = UserSerializer
 
 class LoginView(APIView):
@@ -35,18 +35,18 @@ class UserViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
     # authentication_classes = (authentication.TokenAuthentication)
 class ParkingViewSet(viewsets.ModelViewSet):
-    queryset = ParkingInfo.objects.all().order_by('name')
+    queryset = ParkingInfo.objects.all()
     serializer_class = ParkingInfoSerializer
 class ParkingInfoCreate(generics.CreateAPIView):
     # queryset = ParkingInfo.objects.create()
     serializer_class = ParkingInfoSerializer
 
 class PlaceViewSet(viewsets.ModelViewSet):
-	queryset = Place.objects.all().order_by('location')
+	queryset = Place.objects.all()
 	serializer_class = PlaceSerializer
-class BookingsViewSet(viewsets.ModelViewSet):
-    queryset = Bookings.objects.all().order_by('served_date')
-    serializer_class = BookingsSerializer
-class BookingsCreate(generics.CreateAPIView):
-    # queryset = Bookings.objects.create()
-    serializer_class = BookingsSerializer
+class BookingViewSet(viewsets.ModelViewSet):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+class BookingCreate(generics.CreateAPIView):
+    # queryset = Booking.objects.create()
+    serializer_class = BookingSerializer

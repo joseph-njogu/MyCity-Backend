@@ -3,6 +3,7 @@ import datetime
 from django.contrib.auth.models import User
 from location_field.models.plain import PlainLocationField
 
+
 CHOICES_TYPE = (
     ("Busy","Busy"),
     ("Available","Available")

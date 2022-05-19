@@ -22,6 +22,11 @@ def getAccessToken(request):
 
 @csrf_exempt
 def lipa_na_mpesa_online(request):
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    global booking_info
+    booking_info = body
+    paid_car = body['car']
     access_token = MpesaAccessToken.validated_mpesa_access_token
     api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
     headers = {"Authorization": "Bearer %s" % access_token}
@@ -30,13 +35,13 @@ def lipa_na_mpesa_online(request):
         "Password": LipanaMpesaPpassword.decode_password,
         "Timestamp": LipanaMpesaPpassword.lipa_time,
         "TransactionType": "CustomerPayBillOnline",
-        "Amount": 1,
-        "PartyA": 254701020901,
+        "Amount": body['amount'],
+        "PartyA": body['phone'],
         "PartyB": LipanaMpesaPpassword.Business_short_code,
-        "PhoneNumber": 254701020901,
+        "PhoneNumber": body['phone'],
         "CallBackURL": "https://cityparkapi1.herokuapp.com/citypark/callback/",
-        "AccountReference": "Henry",
-        "TransactionDesc": "Testing stk push"
+        "AccountReference": "Parkcity for %s" % body['car'],
+        "TransactionDesc": "Parkcity for %s" % body['car']
     }
 
     response = requests.post(api_url, json=request, headers=headers)
@@ -44,11 +49,11 @@ def lipa_na_mpesa_online(request):
 
 @csrf_exempt
 def MpesaCallBack(request):
-    # logging.info("{}".format("Callback from MPESA"))
     data = request.body.decode('utf-8')
     mpesa_payment = json.loads(data)
-    # print("Mpesa Payment")
-    # print(mpesa_payment)
-    # -print(mpesa_payment['FirstName'])
-    # return mpesa_payment
+    if mpesa_payment['Body']['stkCallback']['Resultcode'] is 0:
+        SubmitToDB()
     return JsonResponse(mpesa_payment)
+
+def SubmitToDB():
+    print(booking_info)

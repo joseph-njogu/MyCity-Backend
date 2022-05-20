@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 import dj_database_url
 from decouple import config
@@ -59,8 +59,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'Mycity.urls'
 
 TEMPLATES = [
@@ -81,7 +83,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Mycity.wsgi.application'
 
-
+#To be used during development
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # DATABASE_URL = 'postgres://megmllasmwvdhz:07815d94cd128cd13b9e3d83b70f157e97caf5e45e05531e7e60fc2b924f4e5f@ec2-44-195-169-163.compute-1.amazonaws.com:5432/dids5jr1hf4lk'

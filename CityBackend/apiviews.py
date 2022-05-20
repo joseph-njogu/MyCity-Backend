@@ -10,7 +10,7 @@ from .serializers import *
 
 class UserCreate(generics.CreateAPIView):
 	# authentication_classes = ()
-	# permission_classes = ()
+	permission_classes = ()
 	serializer_class = UserSerializer
 
 class LoginView(APIView):

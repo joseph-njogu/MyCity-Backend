@@ -51,6 +51,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -90,15 +92,25 @@ WSGI_APPLICATION = 'Mycity.wsgi.application'
 # }
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-DATABASE_URL = 'postgres://megmllasmwvdhz:07815d94cd128cd13b9e3d83b70f157e97caf5e45e05531e7e60fc2b924f4e5f@ec2-44-195-169-163.compute-1.amazonaws.com:5432/dids5jr1hf4lk'
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+# DATABASE_URL = 'postgres://megmllasmwvdhz:07815d94cd128cd13b9e3d83b70f157e97caf5e45e05531e7e60fc2b924f4e5f@ec2-44-195-169-163.compute-1.amazonaws.com:5432/dids5jr1hf4lk'
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('DATABASE_URL')
+#     )
+# }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'parkcity',
+        'HOST':'localhost',
+        'USER':'root',
+        'PASSWORD':'root',
+        'PORT':'3307'
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -116,6 +128,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = (
+#   'http://localhost:8000',
+# )
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'CityPArk API',

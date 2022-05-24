@@ -84,12 +84,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Mycity.wsgi.application'
 
 #To be used during development
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # DATABASE_URL = 'postgres://megmllasmwvdhz:07815d94cd128cd13b9e3d83b70f157e97caf5e45e05531e7e60fc2b924f4e5f@ec2-44-195-169-163.compute-1.amazonaws.com:5432/dids5jr1hf4lk'
@@ -101,16 +101,16 @@ WSGI_APPLICATION = 'Mycity.wsgi.application'
 
 # db_from_env = dj_database_url.config(conn_max_age=500)
 # DATABASES['default'].update(db_from_env)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':'parkcity',
-        'HOST':'localhost',
-        'USER':'root',
-        'PASSWORD':'root',
-        'PORT':'3307'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME':'parkcity',
+#         'HOST':'localhost',
+#         'USER':'root',
+#         'PASSWORD':'root',
+#         'PORT':'3307'
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
